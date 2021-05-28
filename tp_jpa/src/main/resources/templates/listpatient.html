@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+layout:decorator="layout">
+<head> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 
+		<div layout:fragment="content">
+<h1 class="text-center">Cabinet GHOUZRAF MOHAMED </h1>
+<div class="container">
+<form method="get" th:action="@{listpatient(page=1)}">
+<div class="from-group">
+<input type="text" name="keyword" th:value="${keyword}"/>
+<button class="btn btn-primary"> rechercher </button>
+</div>
+</form>
+<table class="table"> <tr class="table-dark"> <th>Nom </th> <th>date de naissance</th>  <th> Malade</th> <th>Score</th> <th> </th><th></th></tr> 
+
+       <tr th:each="Patient:${Patients}">    
+       <td th:text="${Patient.nom}"> </td>
+       <td th:text="${Patient.dateNaissance}"> </td>
+       <td th:text="${Patient.malade}"></td>
+       <td th:text="${Patient.score}"></td>
+       <td><a class="btn btn-danger" th:href="@{deletePatient(id=${Patient.id})}"> Delete </a></td>
+       <td > <a  class="btn btn-success" th:href="@{editpatient(id=${Patient.id})}"> Update </a> </td>
+       
+       </tr>
+
+
+
+  </table>
+  <div>
+<ul class="nav nav-pills">
+<li th:each="page,status:${pages}">
+<a th:class="${status.index==current?'btn btn-primary':'btn'}" th:href="@{listpatient(page=${status.index},keyword=${keyword})}" th:text="${status.index}"></a>
+</li>
+</ul>
+</div>
+  </div>
+  </div>
+  
+</body>
+</html>

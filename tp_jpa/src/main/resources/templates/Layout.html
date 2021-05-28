@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html 
+xmlns:th="http://www.thymeleaf.org" 
+
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient</title>
+  <link rel="stylesheet" href="webjars/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+  <script src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{listpatient}">HOME</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{addpatient}">Ajouter un patient</a>
+    </li>
+    
+
+   
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{logout}">Logout</a>
+    </li>
+    </ul>
+     <!-- ml-auto pour metre drop dawn list a droite -->
+    <ul class="navbar-nav ml-auto">
+    <!-- Dropdown User -->
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" 
+      data-toggle="dropdown">
+        <span ></span>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Login</a>
+        <a class="dropdown-item" >Logout</a>
+        <a class="dropdown-item" href="#">Profile</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<section layout:fragment="content">
+</section>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+layout:decorator="layout">
+<head><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+<div class="container">
+  <div class="card">
+<div class="card-header" th:if="${mode=='edit'}">
+  <h3> Update patient </h3>  
+</div>
+<div class="card-header" th:if="${mode=='add'}">
+  <h3> Add patient </h3>  
+</div>
+<div class="card-body">
+<form th:action="@{savepatient}" method="post">
+    <div class="form-group">
+    <label class="form-label"> id : </label>
+   <label th:text="${patient.id}">   </label>
+     <input  type="hidden" name="id" th:value="${patient.id}"/>
+    </div>
+    <div class="form-group">
+    <label class="form-label"> Nom </label>
+    <input class="form-control" type="text" name="nom" th:value="${patient.nom}"/>
+   
+    </div>
+     <div class="form-group">
+    <label class="form-label"> date Naissance </label>
+    <input class="form-control" type="date" name="dateNaissance" th:value="${patient.dateNaissance}"/>
+   
+    </div>
+     <div class="form-group">
+    <label class="form-label"> malade</label>
+    <input type="checkbox" name="malade" th:checked="${patient.malade}"/>
+    
+    </div>
+     <div class="form-group">
+    <label class="form-label"> score </label>
+    <input class="form-control" type="text" name="score" th:value="${patient.score}"/>
+     
+    <div class="from-group">
+    <button class="btn btn-primary" type="submit"> Save </button>
+    </div>
+    </div>
+    </form>
+</div>
+</div>
+    
+    </div>
+    </div>
+</body>
+</html>
